@@ -6,9 +6,9 @@ onboarding/Problem4.java
  onboarding.Problem4
 onboarding/Problem7.java
  onboarding.Problem7
-onboarding/Problem6.java
- onboarding.Problem6
-onboarding/Problem2.java
- onboarding.Problem2
 onboarding/Problem1.java
  onboarding.Problem1
+onboarding/Problem2.java
+ onboarding.Problem2
+onboarding/Problem6.java
+ onboarding.Problem6
