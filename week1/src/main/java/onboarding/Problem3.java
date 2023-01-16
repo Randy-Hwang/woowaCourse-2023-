@@ -27,57 +27,11 @@ public class Problem3 {
         return answer;
     }
 
-    /**
-     * Counting from 1 to the target number,
-     * this function make numbers to string of each digits.
-     * After, check369 function called.
-     * If 369 exists, raise howMany variable.
-     * @param stringify stringified number.
-     * @return the number of 369s when counting from 1 to the number.
-     */
     private static int count369(String stringify) {
         int howMany = 0;
-        if (stringify.length() == 1) {
-            if (check369(stringify)) {
-                howMany += 1;
-            }
-        } else if (stringify.length() == 2) {
-            String tensDigit = String.valueOf(stringify.charAt(0));
-            String onesDigit = String.valueOf(stringify.charAt(1));
-            if (check369(tensDigit)) {
-                howMany += 1;
-            }
-            if (check369(onesDigit)) {
-                howMany += 1;
-            }
-        } else if (stringify.length() == 3) {
-            String hundredsDigit = String.valueOf(stringify.charAt(0));
-            String tensDigit = String.valueOf(stringify.charAt(1));
-            String onesDigit = String.valueOf(stringify.charAt(2));
-            if (check369(hundredsDigit)) {
-                howMany += 1;
-            }
-            if (check369(tensDigit)) {
-                howMany += 1;
-            }
-            if (check369(onesDigit)) {
-                howMany += 1;
-            }
-        } else {
-            String thousandsDigit = String.valueOf(stringify.charAt(0));
-            String hundredsDigit = String.valueOf(stringify.charAt(1));
-            String tensDigit = String.valueOf(stringify.charAt(2));
-            String onesDigit = String.valueOf(stringify.charAt(3));
-            if (check369(thousandsDigit)) {
-                howMany += 1;
-            }
-            if (check369(hundredsDigit)) {
-                howMany += 1;
-            }
-            if (check369(tensDigit)) {
-                howMany += 1;
-            }
-            if (check369(onesDigit)) {
+        for (int i = 0; i < stringify.length(); i++) {
+            String eachDigit = String.valueOf(stringify.charAt(i));
+            if (check369(eachDigit)) {
                 howMany += 1;
             }
         }
