@@ -14,7 +14,29 @@ public class Problem4 {
      * @return the sentence made based on the parameter "word"
      */
     public static String solution(String word) {
-        String answer = "";
+        String answer;
+        String[] splitSentences = word.split(" ");
+
+        ArrayList<Integer> splitedList = new ArrayList<>();
+        ArrayList<String> sumOfChanged = new ArrayList<>();
+
+        for (String words : splitSentences) {
+            splitedList.clear();
+            for (int i = 0; i < words.length(); i++) {
+                int c = words.charAt(i); // Get ASCII code changing char to int
+                splitedList.add(c);
+            }
+            String changedWord = changeWord(splitedList);
+            sumOfChanged.add(changedWord);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (String words : sumOfChanged) {
+            sb.append(words);
+            sb.append(" ");
+        }
+        sb.deleteCharAt(sb.length() - 1); // Delete last spacing
+        answer = sb.toString();
 
         return answer;
     }
@@ -30,8 +52,32 @@ public class Problem4 {
      * @param wordList The given word changed into ArrayList.
      * @return the String changed into specific rules explained in the problem.
      */
-    private static String changeWord(ArrayList<Character> wordList) {
-        String answer = "";
+    private static String changeWord(ArrayList<Integer> wordList) {
+        String answer;
+        ArrayList<Integer> changedASCII = new ArrayList<>();
+        for (Integer beforeASCII : wordList) {
+            if (beforeASCII > 64 && beforeASCII < 91) { // When alphabet is uppercase.
+                int difference = beforeASCII - 65;
+                changedASCII.add(90 - difference);
+            } else if (beforeASCII > 96 && beforeASCII < 123) { // When alphabet is lowercase.
+                int difference = beforeASCII - 97;
+                changedASCII.add(122 - difference);
+            } else {
+                System.out.println("There is something that not an alphabet. Try Again.");
+            }
+        }
+
+        ArrayList<String> answerASCII = new ArrayList<>();
+        for (Integer beforeASCII : changedASCII) {
+            String c = Character.toString(beforeASCII);
+            answerASCII.add(c);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (String chars : answerASCII) {
+            sb.append(chars);
+        }
+        answer = sb.toString();
 
         return answer;
     }
